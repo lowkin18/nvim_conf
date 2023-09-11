@@ -1,0 +1,7 @@
+{
+  "catppuccin": { "branch": "main", "commit": "a937d546f4783a1ff67f84043d2d7871ad4ecd83" },
+  "flash.nvim": { "branch": "main", "commit": "8a8e74922a383c253b7f92e042b749150140c8d1" },
+  "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
+  "nvim-surround": { "branch": "main", "commit": "0d6882635817a2677749a330127d12ac30a4f3c8" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "addb64a772cb4a3ae1f1363583012b2cada2cd66" }
+}
