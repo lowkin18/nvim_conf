@@ -1,14 +1,22 @@
-vim.g.mapleader = '<Space>' -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 local map = vim.keymap.set
 
-map("i", "kj", "<Esc>l", { desc = "Exit insert mode with jk" })
+map("i", "kj", "<Esc>l", { desc = "Exit insert mode with kj" })
 
-map("i", "<A-j>", "<C-o>gj", { desc ="move line down"}) -- move line up(n)
-map("i", "<A-k>", "<C-o>gk", { desc ="move line up"}) -- move line down(n)
+-- normal mode
+map("n", "<CR>", "$a<CR>", { desc ="create new line and go"}) -- move line up(n)
 
-map("n", "<A-j>", ":m .+1<CR>==", { desc ="move line down"}) -- move line up(n)
-map("n", "<A-k>", ":m .-2<CR>==", { desc ="move line up"}) -- move line down(n)
 
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc ="move line up"}) -- move line down(v)
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc ="move line down"}) -- move line up(v)a
+
+
+
+if vim.g.vscode then
+    local neovim_api = require("kipke.core.vscode-neovim")
+    map("n", "<leader>k", neovim_api.call('workbench.action.nextEditorInGroup'), { desc ="create new line and go"}) -- move line up(n)
+end
+
+
+
+
+ 
