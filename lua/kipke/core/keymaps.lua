@@ -1,14 +1,20 @@
-vim.g.mapleader = '<Space>' -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.mapleader = ' ' -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 local map = vim.keymap.set
 
+
 map("i", "kj", "<Esc>l", { desc = "Exit insert mode with jk" })
 
-map("i", "<A-j>", "<C-o>gj", { desc ="move line down"}) -- move line up(n)
-map("i", "<A-k>", "<C-o>gk", { desc ="move line up"}) -- move line down(n)
+map("v", "<A-k>", "<Cmd>call VSCodeCall('editor.action.moveLinesUpAction')<CR>", { desc ="move line down"}) -- move line up(n)
+map("v", "<A-j>", "<Cmd>call VSCodeCall('editor.action.moveLinesDownAction')<CR>", { desc ="movae line up"}) -- move line down(n)
 
-map("n", "<A-j>", ":m .+1<CR>==", { desc ="move line down"}) -- move line up(n)
-map("n", "<A-k>", ":m .-2<CR>==", { desc ="move line up"}) -- move line down(n)
+map("n", "<A-j>", "<Cmd>call VSCodeCall('editor.action.moveLinesDownAction')<CR>", { desc ="move line up"}) -- move line down(n)
+map("n", "<A-k>", "<Cmd>call VSCodeCall('editor.action.moveLinesUpAction')<CR>", { desc ="move line down"}) -- move line up(n)
 
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc ="move line up"}) -- move line down(v)
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc ="move line down"}) -- move line up(v)a
+--- movement
+map("n", "<leader><C-j>", "<Cmd>call VSCodeCall('workbench.action.navigateDown')<CR>", { desc ="navigate down"}) -- move line up(n)
+map("n", "<leader><C-k>", "<Cmd>call VSCodeCall('workbench.action.navigateUp')<CR>", { desc ="navigate up"}) -- move line down(n)
+map("n", "<leader><C-h>", "<Cmd>call VSCodeCall('workbench.action.navigateLeft')<CR>", { desc ="navigate left"}) -- move line up(n)
+map("n", "<leader><C-l>", "<Cmd>call VSCodeCall('workbench.action.navigateRight')<CR>", { desc ="navigate right"}) -- move line down(n)
+
+map("n","<leader>hf","<Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>", { desc = "find in files"});
